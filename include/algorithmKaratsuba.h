@@ -12,11 +12,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 class KaratsubaAlgorithm {
     public:
         KaratsubaAlgorithm();
-        int KaratsubaOperation();
+        int KaratsubaOperation(int *a, int *b, int *result, int n);
         void setFirstOperand(int firstOperand);
         void setSecondOperand(int secondOperand);
         void PrintTheSolution();

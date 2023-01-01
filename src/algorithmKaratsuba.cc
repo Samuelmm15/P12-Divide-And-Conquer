@@ -16,8 +16,61 @@ KaratsubaAlgorithm::KaratsubaAlgorithm() {
     secondOperand_ = 0;
 };
 
-int KaratsubaAlgorithm::KaratsubaOperation() {
-    return 0;
+int KaratsubaAlgorithm::KaratsubaOperation(int *a, int *b, int *result, int n) {
+    if (n == 1)
+    {
+        result[0] = a[0] * b[0];
+        return;
+    }
+
+    int n2 = n / 2;
+    int n1 = n - n2;
+
+    int *a1 = new int[n1];
+    int *a2 = new int[n2];
+    int *b1 = new int[n1];
+    int *b2 = new int[n2];
+    int *c0 = new int[n];
+    int *c1 = new int[n];
+    int *c2 = new int[n];
+
+    for (int i = 0; i < n1; i++)
+        a1[i] = a[i];
+    for (int i = 0; i < n2; i++)
+        a2[i] = a[i + n1];
+    for (int i = 0; i < n1; i++)
+        b1[i] = b[i];
+    for (int i = 0; i < n2; i++)
+        b2[i] = b[i + n1];
+
+    KaratsubaOperation(a1, b1, c1, n1);
+    KaratsubaOperation(a2, b2, c2, n2);
+
+    for (int i = 0; i < n1; i++)
+        a1[i] += a2[i];
+    for (int i = 0; i < n1; i++)
+        b1[i] += b2[i];
+    KaratsubaOperation(a1, b1, c0, n1);
+
+    for (int i = 0; i < n; i++)
+        c0[i] -= c1[i];
+    for (int i = 0; i < n; i++)
+        c0[i] -= c2[i];
+
+    for (int i = 0; i < n2; i++)
+        result[i] = c2[i];
+    for (int i = 0; i < n1; i++)
+        result[i + n2] += c1[i];
+    for (int i = 0; i < n1; i++)
+        result[i + n1] += c0[i];
+
+    delete[] a1;
+    delete[] a2;
+    delete[] b1;
+    delete[] b2;
+    delete[] c0;
+    delete[] c1;
+    delete[] c2;
 };
 
 void KaratsubaAlgorithm::setFirstOperand(int firstOperand) {
@@ -29,5 +82,4 @@ void KaratsubaAlgorithm::setSecondOperand(int secondOperand) {
 };
 
 void KaratsubaAlgorithm::PrintTheSolution() {
-    std::cout << "El resultado de la operación es: " << KaratsubaOperation() << std::endl;
 };
