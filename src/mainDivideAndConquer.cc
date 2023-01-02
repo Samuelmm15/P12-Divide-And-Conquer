@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]) {
             /// Compienzo del programa con el algoritmo Karatsuba por defecto.
             std::string number = argv[1];
             std::cout << "El primer número es: " << number << std::endl;
-            std::string number2 = "123456789";
+            std::string number2 = "87654321";
             std::cout << "El segundo número es: " << number2 << std::endl;
             KaratsubaAlgorithm KaratsubaExample;
             std::cout << "La solución de la operación es: " << KaratsubaExample.KaratsubaOperation(number, number2) << std::endl;

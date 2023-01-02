@@ -85,6 +85,16 @@ std::string KaratsubaAlgorithm::KaratsubaOperation(std::string num1, std::string
     if (n == 1 && m == 1)
         return std::to_string((num1[0] - '0') * (num2[0] - '0'));
 
+    // Ajustar el tamaño de los números para que tengan la misma longitud
+    if (n > m) {
+        num2.insert(0, n - m, '0');
+    } else {
+        num1.insert(0, m - n, '0');
+    }
+
+    n = num1.size();
+    m = num2.size();
+
     // Dividir los números en dos partes
     std::string a = num1.substr(0, n/2);
     std::string b = num1.substr(n/2, n - n/2);
