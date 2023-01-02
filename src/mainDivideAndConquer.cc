@@ -13,6 +13,8 @@
 #include <vector>
 #include <string>
 
+#include "../include/algorithmKaratsuba.h"
+
 int main(int argc, char const *argv[]) {
     if (argc == 2) {
         std::string option = argv[1];
@@ -25,6 +27,13 @@ int main(int argc, char const *argv[]) {
             std::cout << std::endl;
         } else {
             /// Compienzo del programa con el algoritmo Karatsuba por defecto.
+            int *example;
+            example = new int [1, 2, 3, 4, 5, 6];
+            KaratsubaAlgorithm KaratsubaExample;
+            KaratsubaExample.setFirstOperand(123456);
+            KaratsubaExample.setSecondOperand(123456);
+            KaratsubaExample.KaratsubaOperation(example, example, example, 6);
+            KaratsubaExample.PrintTheSolution();
         }
     } else if (argc == 3) {
         /// Determinación de las distintas opciones con las que se puede ejecutar el algoritmo.

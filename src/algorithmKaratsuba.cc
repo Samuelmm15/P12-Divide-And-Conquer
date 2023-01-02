@@ -64,6 +64,8 @@ int KaratsubaAlgorithm::KaratsubaOperation(int *a, int *b, int *result, int n) {
     for (int i = 0; i < n1; i++)
         result[i + n1] += c0[i];
 
+    result_ = result[0];
+
     delete[] a1;
     delete[] a2;
     delete[] b1;
@@ -82,4 +84,7 @@ void KaratsubaAlgorithm::setSecondOperand(int secondOperand) {
 };
 
 void KaratsubaAlgorithm::PrintTheSolution() {
+    std::cout << std::endl;
+    std::cout << "La solución es: " << firstOperand_ * secondOperand_ << std::endl;
+    std::cout << "El resultado es: " << result_ << std::endl;
 };

@@ -24,4 +24,5 @@ class KaratsubaAlgorithm {
     private:
         int firstOperand_;
         int secondOperand_;
+        int result_;
 };
