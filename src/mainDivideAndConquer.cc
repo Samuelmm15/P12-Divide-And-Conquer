@@ -27,13 +27,12 @@ int main(int argc, char const *argv[]) {
             std::cout << std::endl;
         } else {
             /// Compienzo del programa con el algoritmo Karatsuba por defecto.
-            int *example;
-            example = new int [1, 2, 3, 4, 5, 6];
+            std::string number = argv[1];
+            std::cout << "El primer número es: " << number << std::endl;
+            std::string number2 = "123456789";
+            std::cout << "El segundo número es: " << number2 << std::endl;
             KaratsubaAlgorithm KaratsubaExample;
-            KaratsubaExample.setFirstOperand(123456);
-            KaratsubaExample.setSecondOperand(123456);
-            KaratsubaExample.KaratsubaOperation(example, example, example, 6);
-            KaratsubaExample.PrintTheSolution();
+            std::cout << "La solución de la operación es: " << KaratsubaExample.KaratsubaOperation(number, number2) << std::endl;
         }
     } else if (argc == 3) {
         /// Determinación de las distintas opciones con las que se puede ejecutar el algoritmo.

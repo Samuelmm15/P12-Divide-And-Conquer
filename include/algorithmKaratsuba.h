@@ -13,11 +13,13 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <cstring>
+#include <cmath>
 
 class KaratsubaAlgorithm {
     public:
         KaratsubaAlgorithm();
-        int KaratsubaOperation(int *a, int *b, int *result, int n);
+        std::string KaratsubaOperation(std::string num1, std::string num2);
         void setFirstOperand(int firstOperand);
         void setSecondOperand(int secondOperand);
         void PrintTheSolution();
