@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <ctime>
+#include <chrono>
 
 #include "../include/algorithmKaratsuba.h"
 #include "../include/bigIntClass.h"
@@ -43,14 +43,15 @@ int main(int argc, char const *argv[]) {
     std::cout << "El primer operador es: " << number1 << std::endl;
     std::cout << "El segundo operador es: " << number2 << std::endl;
     KaratsubaAlgorithm KaratsubaExample;
-    unsigned tStart = clock();
+    auto start = std::chrono::high_resolution_clock::now();
     std::cout << "La solución de la operación es: "
               << KaratsubaExample.KaratsubaOperation(std::stoi(number1),
                                                      std::stoi(number2))
               << std::endl;
     /// tiempo de ejecución del algoritmo de Karatsuba.
-    unsigned tCode = clock();
-    printf("Time taken: %.2fs", (double)(tStart - tCode) / CLOCKS_PER_SEC);
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start).count();
+    std::cout << "Tiempo de ejecución del algoritmo de Karatsuba: " << duration << " segundos" << std::endl;
     std::cout << std::endl;
   } else if (argc == 4) {
     std::string option = argv[1];
@@ -62,15 +63,16 @@ int main(int argc, char const *argv[]) {
       std::cout << "El primer operador es: " << number1 << std::endl;
       std::cout << "El segundo operador es: " << number2 << std::endl;
       KaratsubaAlgorithm KaratsubaExample;
-      unsigned tStart = clock();
+      auto start = std::chrono::high_resolution_clock::now();;
       std::cout << "La solución de la operación es: "
                 << KaratsubaExample.KaratsubaOperation(std::stoi(number1),
                                                        std::stoi(number2))
                 << std::endl;
-      /// tiempo de ejecución del algoritmo de Karatsuba.
-      unsigned tCode = clock();
-      printf("Time taken: %.2fs", (double)(tStart - tCode) / CLOCKS_PER_SEC);
-      std::cout << std::endl;
+        /// tiempo de ejecución del algoritmo de Karatsuba.
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start).count();
+        std::cout << "Tiempo de ejecución del algoritmo de Karatsuba: " << duration << " segundos" << std::endl;
+        std::cout << std::endl;
     } else if (option == "-m") {
       /// Comienzo del programa con la sobrecarga del operador * de la clase
       /// BigInt.
@@ -80,12 +82,13 @@ int main(int argc, char const *argv[]) {
         BigInt number1BigInt(number1);
         BigInt number2BigInt(number2);
         BigInt result;
-        unsigned tStart = clock();
+        auto start = std::chrono::high_resolution_clock::now();
         result = number1BigInt * number2BigInt;
         std::cout << "El resultado de la operación es: " << result << std::endl;
-        /// tiempo de ejecución del algoritmo de BigInt.
-        unsigned tCode = clock();
-        printf("Time taken: %.2fs", (double)(tStart - tCode) / CLOCKS_PER_SEC);
+        /// tiempo de ejecución del algoritmo de la clase BigInt.
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start).count();
+        std::cout << "Tiempo de ejecución del algoritmo de la clase BigInt: " << duration << " segundos" << std::endl;
         std::cout << std::endl;
     } else {
       std::cout << std::endl;
