@@ -39,10 +39,10 @@ int main(int argc, char const *argv[]) {
         std::string number1 = argv[1];
         std::string number2 = argv[2];
         std::cout << std::endl;
-        std::cout << "El primer operador es: " << number1 << std::endl;
-        std::cout << "El segundo operador es: " << number2 << std::endl;
+        std::cout << "El primer operador es: " << std::stoi(number1) << std::endl;
+        std::cout << "El segundo operador es: " << std::stoi(number2) << std::endl;
         KaratsubaAlgorithm KaratsubaExample;
-        std::cout << "La solución de la operación es: " << KaratsubaExample.KaratsubaOperation(number1, number2) << std::endl;
+        std::cout << "La solución de la operación es: " << KaratsubaExample.KaratsubaOperation(std::stoi(number1), std::stoi(number2)) << std::endl;
         std::cout << std::endl;
         // if (option == "-k") {
         //     /// Comienzo del programa con el algoritmo Karatsuba.

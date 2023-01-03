@@ -14,12 +14,12 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
-#include <math.h>
+#include <cmath>
 
 class KaratsubaAlgorithm {
     public:
         KaratsubaAlgorithm();
-        std::string KaratsubaOperation(std::string num1, std::string num2);
+        long long KaratsubaOperation(long long num1, long long num2);
         void setFirstOperand(int firstOperand);
         void setSecondOperand(int secondOperand);
         void PrintTheSolution();

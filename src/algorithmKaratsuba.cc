@@ -16,8 +16,65 @@ KaratsubaAlgorithm::KaratsubaAlgorithm() {
     secondOperand_ = 0;
 };
 
-std::string KaratsubaAlgorithm::KaratsubaOperation(std::string num1, std::string num2) {
-    int n = num1.size();
+long long KaratsubaAlgorithm::KaratsubaOperation(long long num1, long long num2) {
+    // Si uno de los números es cero, la multiplicación es cero
+    if (num1 == 0 || num2 == 0)
+        return 0;
+
+    // Si uno de los números es de un solo dígito, se puede multiplicar de manera convencional
+    if (num1 < 10 && num2 < 10)
+        return num1 * num2;
+
+    // Contar el número de dígitos de cada número
+    int n = 0;
+    long long temp = num1;
+    while (temp > 0)
+    {
+        n++;
+        temp /= 10;
+    }
+
+    int m = 0;
+    temp = num2;
+    while (temp > 0)
+    {
+        m++;
+        temp /= 10;
+    }
+
+    // Dividir los números en dos partes
+    long long a = floor(num1 / pow(10, n / 2));
+    long long b = num1 - a * pow(10, n / 2);
+    long long c = floor(num2 / pow(10, m / 2));
+    long long d = num2 - c * pow(10, m / 2);
+
+    // Calcular los productos intermedios de manera recursiva
+    long long ac = KaratsubaOperation(a, c);
+    long long bd = KaratsubaOperation(b, d);
+    long long adbc = KaratsubaOperation(a + b, c + d) - ac - bd;
+
+    // Unir todas las partes y devolver el resultado utilizando la técnica de divide y vencerás
+    return ac * pow(10, n) + adbc * pow(10, n / 2) + bd;
+
+};
+
+void KaratsubaAlgorithm::setFirstOperand(int firstOperand) {
+    firstOperand_ = firstOperand;
+};
+
+void KaratsubaAlgorithm::setSecondOperand(int secondOperand) {
+    secondOperand_ = secondOperand;
+};
+
+void KaratsubaAlgorithm::PrintTheSolution() {
+    std::cout << std::endl;
+    std::cout << "La solución es: " << firstOperand_ * secondOperand_ << std::endl;
+    std::cout << "El resultado es: " << result_ << std::endl;
+};
+
+/*
+EJEMPLO DE CÓDIGO DE KARATSUBA
+int n = num1.size();
     int m = num2.size();
 
     // Si uno de los números es cero, la multiplicación es cero
@@ -40,9 +97,9 @@ std::string KaratsubaAlgorithm::KaratsubaOperation(std::string num1, std::string
 
     // Dividir los números en dos partes
     std::string a = num1.substr(0, n / 2);
-    std::string b = num1.substr(n / 2);
+    std::string b = num1.substr(n/2, n - n/2);
     std::string c = num2.substr(0, m / 2);
-    std::string d = num2.substr(m / 2);
+    std::string d = num2.substr(m/2, m - m/2);
 
     // Calcular los productos intermedios
     std::string ac = KaratsubaOperation(a, c);
@@ -53,18 +110,46 @@ std::string KaratsubaAlgorithm::KaratsubaOperation(std::string num1, std::string
     std::string result = std::to_string(pow(10, n) * std::stoi(ac) + pow(10, n / 2) * (std::stoi(abcd) - std::stoi(ac) - std::stoi(bd)) + std::stoi(bd));
 
     return result;
-};
+*/
 
-void KaratsubaAlgorithm::setFirstOperand(int firstOperand) {
-    firstOperand_ = firstOperand;
-};
+/*
+OTRO EJEMPLO DE CÓDIGO DE KARATSUBA
+// Si uno de los números es cero, la multiplicación es cero
+    if (num1 == 0 || num2 == 0)
+        return 0;
 
-void KaratsubaAlgorithm::setSecondOperand(int secondOperand) {
-    secondOperand_ = secondOperand;
-};
+    // Si uno de los números es de un solo dígito, se puede multiplicar de manera convencional
+    if (num1 < 10 && num2 < 10)
+        return num1 * num2;
 
-void KaratsubaAlgorithm::PrintTheSolution() {
-    std::cout << std::endl;
-    std::cout << "La solución es: " << firstOperand_ * secondOperand_ << std::endl;
-    std::cout << "El resultado es: " << result_ << std::endl;
-};
+    // Contar el número de dígitos de cada número
+    int n = 0;
+    int temp = num1;
+    while (temp > 0)
+    {
+        n++;
+        temp /= 10;
+    }
+
+    int m = 0;
+    temp = num2;
+    while (temp > 0)
+    {
+        m++;
+        temp /= 10;
+    }
+
+    // Dividir los números en dos partes
+    int a = num1 / pow(10, n / 2);
+    int b = num1 % (int)pow(10, n / 2);
+    int c = num2 / pow(10, m / 2);
+    int d = num2 % (int)pow(10, m / 2);
+
+    // Calcular los productos intermedios de manera recursiva
+    int ac = KaratsubaOperation(a, c);
+    int bd = KaratsubaOperation(b, d);
+    int adbc = KaratsubaOperation(a + b, c + d) - ac - bd;
+
+    // Unir todas las partes y devolver el resultado utilizando la técnica de divide y vencerás
+    return ac * pow(10, n) + adbc * pow(10, n / 2) + bd;
+*/
