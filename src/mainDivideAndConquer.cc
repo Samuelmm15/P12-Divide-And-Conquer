@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
 
 #include "../include/algorithmKaratsuba.h"
 #include "../include/bigIntClass.h"
@@ -42,10 +43,14 @@ int main(int argc, char const *argv[]) {
     std::cout << "El primer operador es: " << number1 << std::endl;
     std::cout << "El segundo operador es: " << number2 << std::endl;
     KaratsubaAlgorithm KaratsubaExample;
+    unsigned tStart = clock();
     std::cout << "La solución de la operación es: "
               << KaratsubaExample.KaratsubaOperation(std::stoi(number1),
                                                      std::stoi(number2))
               << std::endl;
+    /// tiempo de ejecución del algoritmo de Karatsuba.
+    unsigned tCode = clock();
+    printf("Time taken: %.2fs", (double)(tStart - tCode) / CLOCKS_PER_SEC);
     std::cout << std::endl;
   } else if (argc == 4) {
     std::string option = argv[1];
@@ -57,10 +62,14 @@ int main(int argc, char const *argv[]) {
       std::cout << "El primer operador es: " << number1 << std::endl;
       std::cout << "El segundo operador es: " << number2 << std::endl;
       KaratsubaAlgorithm KaratsubaExample;
+      unsigned tStart = clock();
       std::cout << "La solución de la operación es: "
                 << KaratsubaExample.KaratsubaOperation(std::stoi(number1),
                                                        std::stoi(number2))
                 << std::endl;
+      /// tiempo de ejecución del algoritmo de Karatsuba.
+      unsigned tCode = clock();
+      printf("Time taken: %.2fs", (double)(tStart - tCode) / CLOCKS_PER_SEC);
       std::cout << std::endl;
     } else if (option == "-m") {
       /// Comienzo del programa con la sobrecarga del operador * de la clase
@@ -71,8 +80,12 @@ int main(int argc, char const *argv[]) {
         BigInt number1BigInt(number1);
         BigInt number2BigInt(number2);
         BigInt result;
+        unsigned tStart = clock();
         result = number1BigInt * number2BigInt;
         std::cout << "El resultado de la operación es: " << result << std::endl;
+        /// tiempo de ejecución del algoritmo de BigInt.
+        unsigned tCode = clock();
+        printf("Time taken: %.2fs", (double)(tStart - tCode) / CLOCKS_PER_SEC);
         std::cout << std::endl;
     } else {
       std::cout << std::endl;
