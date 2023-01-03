@@ -39,22 +39,32 @@ int main(int argc, char const *argv[]) {
         std::string number1 = argv[1];
         std::string number2 = argv[2];
         std::cout << std::endl;
-        std::cout << "El primer operador es: " << std::stoi(number1) << std::endl;
-        std::cout << "El segundo operador es: " << std::stoi(number2) << std::endl;
+        std::cout << "El primer operador es: " << number1 << std::endl;
+        std::cout << "El segundo operador es: " << number2 << std::endl;
         KaratsubaAlgorithm KaratsubaExample;
         std::cout << "La solución de la operación es: " << KaratsubaExample.KaratsubaOperation(std::stoi(number1), std::stoi(number2)) << std::endl;
         std::cout << std::endl;
-        // if (option == "-k") {
-        //     /// Comienzo del programa con el algoritmo Karatsuba.
-        // } else if (option == "-m") {
-        //     /// Comienzo del programa con la sobrecarga del operador * de la clase BigInt.
-        // } else {
-        //     std::cout << std::endl;
-        //     std::cout << "ERROR >>> La opción introducida no es correcta." << std::endl;
-        //     std::cout << "Para más información sobre la ejecución del programa, haga uso de la opción -h o --help." << std::endl;
-        //     std::cout << "Ejemplo: ./mainDivideAndConquer [-h | --help]" << std::endl;
-        //     std::cout << std::endl;
-        // }
+    } else if (argc == 4) {
+        std::string option = argv[1];
+        std::string number1 = argv[2];
+        std::string number2 = argv[3];
+        if (option == "-k") {
+            /// Comienzo del programa con el algoritmo Karatsuba.
+            std::cout << std::endl;
+            std::cout << "El primer operador es: " << number1 << std::endl;
+            std::cout << "El segundo operador es: " << number2 << std::endl;
+            KaratsubaAlgorithm KaratsubaExample;
+            std::cout << "La solución de la operación es: " << KaratsubaExample.KaratsubaOperation(std::stoi(number1), std::stoi(number2)) << std::endl;
+            std::cout << std::endl;
+        } else if (option == "-m") {
+            /// Comienzo del programa con la sobrecarga del operador * de la clase BigInt.
+        } else {
+            std::cout << std::endl;
+            std::cout << "ERROR >>> La opción introducida no es correcta." << std::endl;
+            std::cout << "Para más información sobre la ejecución del programa, haga uso de la opción -h o --help." << std::endl;
+            std::cout << "Ejemplo: ./mainDivideAndConquer [-h | --help]" << std::endl;
+            std::cout << std::endl;
+        }
     } else {
         std::cout << std::endl;
         std::cout << "ERROR >>> El número de argumentos es incorrecto." << std::endl;

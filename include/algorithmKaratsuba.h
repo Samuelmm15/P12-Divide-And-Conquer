@@ -20,11 +20,4 @@ class KaratsubaAlgorithm {
     public:
         KaratsubaAlgorithm();
         long long KaratsubaOperation(long long num1, long long num2);
-        void setFirstOperand(int firstOperand);
-        void setSecondOperand(int secondOperand);
-        void PrintTheSolution();
-    private:
-        int firstOperand_;
-        int secondOperand_;
-        int result_;
 };
