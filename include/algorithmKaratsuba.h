@@ -14,7 +14,7 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
-#include <cmath>
+#include <math.h>
 
 class KaratsubaAlgorithm {
     public:
