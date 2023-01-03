@@ -8,7 +8,7 @@ text5 = clear; make clean; make; clear; ./largeIntegerMultiplication
 CC=g++
 CXXFLAGS=-g -std=c++14
 
-OBJS = src/mainDivideAndConquer.o src/algorithmKaratsuba.o
+OBJS = src/mainDivideAndConquer.o src/algorithmKaratsuba.o src/bigIntClass.o
 
 all: ${OBJS}
 		@echo $(text0)

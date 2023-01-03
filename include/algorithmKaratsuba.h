@@ -16,6 +16,8 @@
 #include <cstring>
 #include <cmath>
 
+#pragma once
+
 class KaratsubaAlgorithm {
     public:
         KaratsubaAlgorithm();
